@@ -14,8 +14,8 @@ import time
 start_time = time.time()
 
 # Model parameters(Optimising Transition States paper 4, 2*pi)
-d_1 = 0 #Coupling term
-d_2 = 1
+d_1 = 4 #Coupling term
+d_2 = 2*pi
 
 param = np.array([d_1, d_2])
 
@@ -24,7 +24,7 @@ x_saddle = [1, -param[0]/(2*param[1]*pi)]
 x_centre = [0.5, param[0]/(2*param[1]*pi)]
 
 
-deltaE = 0.1
+deltaE = 0.015
 TOTAL_ENERGY = voter.pe_voter97(x_saddle[0],x_saddle[1], param) + deltaE  #Define initial conditions and solver parameters
 
 #Integrate for T
