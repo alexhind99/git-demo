@@ -50,6 +50,21 @@ def px_momenta(x, y, py, param, TOTAL_ENERGY):
     
     return px
 
+def traj2d(x, y, x0, y0, param):
+    fig, ax = plt.subplots()
+    plt.plot(x, y, '-b')
+    plt.plot(x0,y0,'gx')
+    plt.plot(x[-1],y[-1],'rx')
+    X = np.arange(0, 3, 0.001)
+    Y = np.arange(-1, 1, 0.001)
+    X, Y = np.meshgrid(X, Y)
+    Z = np.cos(2*pi*X)*(1+ param[0]*Y) + param[1]*pi*Y**2
+    contour = plt.contourf(X, Y, Z, 20, cmap='hot')
+    ax.set_xlabel(r'$q_{1}$')
+    ax.set_ylabel(r'$q_{2}$')
+    plt.colorbar()
+    plt.show()
+
 
 def intermediate_region_crossed(x,y, param, R):
         return ((x-3/2)**2 + (y-param[0]/(2*param[1]*pi))**2) - R**2
